@@ -17,7 +17,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use(bodyParser.json());
 app.post("/", (req, res) => {
     var userSpecialService = req.body.specialTextAreaValue; 
     let resObject = {};
@@ -25,21 +24,21 @@ app.post("/", (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'yassine.bazgour@gmail.com',
-          pass: myPassword
+            user: 'yassine.bazgour@gmail.com',
+            pass: myPassword
         }
     });
     
     var mailOptions = {
         from: 'yassine.bazgour@gmail.com',
         to: 'yassine.bazgour@gmail.com',
-        subject: 'iBulk Special Service',
+        subject: 'iBulk Special Request',
         html: 
             `
-                <p>Hello,</p>
-                <p>A special service request has been submitted. Please find the details below:</p>
-                <p><strong>Special Request:</strong> ${userSpecialService}</p>
-                <p>Thank you</p>
+                <div style="background-color: #f4f4f4; padding: 20px; border-radius: 10px; font-family: Arial, sans-serif; color: #333;">
+                    <h2 style="color: black;">iBulk Special Request</h2>
+                    <p style="font-size: 16px; margin-bottom: 20px;"><strong>Special Request:</strong><br> ${userSpecialService}</p>
+                </div>
             `
     };
 
